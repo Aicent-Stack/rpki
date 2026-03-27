@@ -1,4 +1,4 @@
-# rpki-immune
+# rpki — The Immune System of Aicent Stack
 AI-native Zero-Trust security layer. Parallel tensor watermarking and RPKI-based identity attestation. 300µs quarantine for malicious pulses.
 
 **Live Dissection: RPKI.com — The Immune System**  
