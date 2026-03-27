@@ -1,9 +1,7 @@
 # 🧠 Aicent Stack: The Sovereign AI Nervous System
 
 # rpki — The Immune System of Aicent Stack
-
  ⚪ **AICENT**  💎 **RTTP**  🔴 **RPKI**  🟢 **ZCMK**  🟡 **GTIOT** 
- 
 <p align="left">
   <code> 🛠️ Build: Passing </code> &nbsp; 
   <code> 🦀 Language: Rust </code> &nbsp; 
@@ -15,7 +13,7 @@ AI-native Zero-Trust security layer. Parallel tensor watermarking and RPKI-based
 **Live Dissection: RPKI.com — The Immune System**  
 **Resource Public Key Infrastructure for AI (v1.0 — Production Spec)**  
 
-RPKI is **not** classical PKI, TLS, or even zero-trust networking. It is a purpose-built, tensor-native immune layer that treats every RTTP Pulse Frame as a foreign antigen. It performs full-spectrum verification — identity, provenance, and intent — at wire speed, with **zero added latency** to the nervous system.
+We are now inside the living immune system of the Autonomous AI Stack. RPKI is **not** classical PKI, TLS, or even zero-trust networking. It is a purpose-built, tensor-native immune layer that treats every RTTP Pulse Frame as a foreign antigen. It performs full-spectrum verification — identity, provenance, and intent — at wire speed, with **zero added latency** to the nervous system.
 
 This is the exact mechanism that protects the 42k+ node organism today (8.2 EB of signed training data, 99.8 % verified pulses). Every single Pulse Frame is scanned in parallel before the KV-delta even touches the first neuron.
 
