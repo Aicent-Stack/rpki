@@ -1,4 +1,3 @@
-![Rust CI](https://github.com/Aicent-Stack/rttp/workflows/Rust%20CI/badge.svg)
 # 🔴 rpki — The Immune System of Aicent Stack
 
  ⚪ **AICENT**  💎 **RTTP**  🔴 **RPKI**  🟢 **ZCMK**  🟡 **GTIOT** 
