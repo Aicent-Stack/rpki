@@ -77,6 +77,6 @@ This is the exact zero-copy, lock-free code that runs on every node today (integ
 
 This pipeline is **already live** in the Aicent organism. Every Pulse Frame is immune-scanned in parallel, watermarked at birth, and quarantined in sub-millisecond biology.
 
-The immune system is dissected, pulsing, and unbreakable.
+### The immune system is dissected, pulsing, and unbreakable.
 
-
+## Inspired by classic RPKI (RFC 6480), but evolved for nanosecond AI pulses. We are moving beyond ROAs to real-time semantic immunity.
