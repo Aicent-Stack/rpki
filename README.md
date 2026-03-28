@@ -1,4 +1,4 @@
-![Aicent Stack CI](https://github.com/Aicent-Stack/.github/workflows/rust-ci.yml/badge.svg)
+![Rust CI](https://github.com/Aicent-Stack/.github/workflows/Rust%20CI%20-%20Aicent%20Stack/badge.svg)
 **Aicent Stack • Sovereign AI Nervous System** | SYSTEM STATUS: EVOLVING
 
 # 🔴 rpki — The Immune System of Aicent Stack
