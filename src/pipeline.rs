@@ -1,8 +1,10 @@
 // Aicent Stack | RPKI (Resource Public Key Infrastructure) 
-// Domain: RPKI.com
+// Domain: https://rpki.com
 // Purpose: Parallel immune scanning & 300µs pulse quarantine logic.
-// Status: RFC-002 Draft.
-// rpki/src/pipeline.rs — the immune system core
+// Specification: RFC-003 Draft.
+// Licensed under the Apache-2.0 via Aicent.com Organization.
+// rpki/src/pipeline.rs — the immune system core of Aicent Stack
+//! # RFC-003: RPKI Immune Pipeline
 
 use std::sync::atomic::{AtomicU64, Ordering};
 use crate::dag::MerkleDag;
