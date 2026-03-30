@@ -1,5 +1,9 @@
-//! RPKI Immunity Demo
-//! Zero-trust watermarking + task chain verification demo
+// Aicent Stack | RPKI (Resource Public Key Infrastructure) 
+// Domain: https://rpki.com
+// Purpose: Parallel Immune Scanning & 300µs Pulse Quarantine
+// Specification: RFC-003 Draft. 
+// License: Apache-2.0 via Aicent.com Organization.
+//! # RFC-003 Demo: Zero-trust Task Chain Verification
 
 use rpki::pipeline::ImmunePipeline;
 
