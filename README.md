@@ -1,13 +1,14 @@
 Aicent Stack • Sovereign AI Nervous System
 
 # 🔴 rpki — The Immune System of Aicent Stack
-⚪ **AICENT** 💎 **RTTP** 🔴 **RPKI** 🟢 **ZCMK** 🟡 **GTIOT**
 
 Parallel Tensor Watermarking & Pathogen Isolation Protocol [RFC-003]
 
 [![RFC](https://img.shields.io/badge/RFC-003-red.svg)](https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-003-RPKI-IMMUNITY.md)
 [![Status](https://img.shields.io/badge/Status-Homeostasis-brightgreen.svg)](#)
 [![Org](https://img.shields.io/badge/Org-Aicent.com-blue.svg)](http://rpki.com)
+
+⚪ **AICENT** (Brain) | 💎 **RTTP** (Nerves) | 🔴 **RPKI** (Immunity) | 🟢 **ZCMK** (Blood) | 🟡 **GTIOT** (Body)
 
 ![RPKI](https://github.com/user-attachments/assets/edef4266-7935-4885-b300-bd077cdc8c60)
 
