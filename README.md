@@ -1,7 +1,7 @@
 # 🔴 rpki — The Immune System of Aicent Stack
 ⚪ **AICENT** 💎 **RTTP** 🔴 **RPKI** 🟢 **ZCMK** 🟡 **GTIOT**
 
-## Parallel Tensor Watermarking & Pathogen Isolation Protocol [RFC-003]
+### Parallel Tensor Watermarking & Pathogen Isolation Protocol [RFC-003]
 
 [![RFC](https://img.shields.io/badge/RFC-003-red.svg)](https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-003-RPKI-IMMUNITY.md)
 [![Status](https://img.shields.io/badge/Status-Homeostasis-brightgreen.svg)](#)
