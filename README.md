@@ -46,7 +46,7 @@ The RPKI pipeline leverages **AVX-512/Tensor Cores** to run 4 independent, lock-
 4. **Sovereign Clearance:** Final attestation of AID fingerprints.
 
 ### 3. Swarm Shield (RFC-006 Integration)
-In Hive mode, RPKI enables **Collective Immunity**. Nodes perform cross-attestation of watermarks across the [Aicent.net](https://aicent.net) backbone. A pathogen detected by the swarm triggers a global **QUARANTINE_PULSE**, ejecting the node in <100µs.
+In Hive mode, RPKI enables **Collective Immunity**. Nodes perform cross-attestation of watermarks across the [Aicent.net](http://aicent.net) backbone. A pathogen detected by the swarm triggers a global **QUARANTINE_PULSE**, ejecting the node in <100µs.
 
 ---
 
