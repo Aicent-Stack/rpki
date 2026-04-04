@@ -1,6 +1,6 @@
 [package]
 name = "rpki"
-description = "RPKI: Parallel Tensor Watermarking Protocol [RFC-003]"
+description = "RPKI: Parallel Tensor Watermarking and Pathogen Isolation Protocol [RFC-003]"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -9,12 +9,17 @@ repository.workspace = true
 
 [dependencies]
 rttp.workspace = true
+
+# --- Parallel Immune Pipeline ---
 rayon.workspace = true
 crossbeam.workspace = true
 crossbeam-channel.workspace = true
 sha2.workspace = true
 ring.workspace = true
 zeroize.workspace = true
+once_cell.workspace = true
+
+# --- Diagnostics ---
 serde.workspace = true
 anyhow.workspace = true
 tracing.workspace = true
