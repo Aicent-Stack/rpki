@@ -2,40 +2,48 @@
 name = "rpki"
 description = "RPKI: Parallel Tensor Watermarking and Pathogen Isolation Protocol [RFC-003]"
 version.workspace = true
-edition.workspace = true
-authors.workspace = true
-license.workspace = true
-repository.workspace = true
-homepage = "http://rpki.com"
+edition = "2024" # Explicitly set edition to 2024 for consistency
+authors = ["Aicent Stack Team <lee@aicent.com>"]
+license = "Apache-2.0"
+repository = "https://github.com/Aicent-Stack/rpki" # Point to its own repository
+homepage = "https://rpki.com"
 documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-003-RPKI-IMMUNITY.md"
 keywords = ["sovereign-ai", "zero-trust", "tensor-watermarking", "rfc-003", "pathogen-isolation"]
 categories = ["cryptography", "network-programming", "security", "hardware-acceleration"]
-rust-version = "1.85"
+rust-version = "1.85" # Explicitly set rust-version to 1.85 for consistency
 
 [dependencies]
-# --- Core Organism Linking ---
-# RPKI inspects the Neural Spine (RTTP) in-band.
+# --- Core Organism Linking (Unidirectional Dependency Flow) ---
+# RPKI secures the Neural Spine (RTTP) at the hardware gate
 rttp = { workspace = true }
 
 # --- Parallel Immune Pipeline ---
-# SIMD-level acceleration for sub-300µs pathogen detection.
+# [RFC-003] SIMD-level acceleration for sub-300µs pathogen detection
 rayon = { workspace = true }
 crossbeam = { workspace = true }
 crossbeam-channel = { workspace = true }
 parking_lot = { workspace = true } # High-concurrency immune triage
 
 # --- Cryptographic DNA (Zero-Trust Provenance) ---
-# High-performance hashing and steganography engines for the Data Soul.
+# [PERF] Hardware-native crypto primitives for In-band Tensor Steganography
 sha2 = { workspace = true }        # Merkle-DAG chain integrity
-ring = { workspace = true }        # Hardware-native cryptographic primitives
-zeroize = { workspace = true, features = ["derive"] } # Secure credential clearing
+ring = { workspace = true }        # Hardware-accelerated signing/verification
+zeroize = { workspace = true, features = ["derive"] } # [SECURITY] Memory-safe credential clearing
 
-# --- Diagnostics & Logic ---
+# --- Logic & Telemetry ---
 serde = { workspace = true, features = ["derive"] }
 anyhow = { workspace = true }
-tracing = { workspace = true }     # Real-time pathogen isolation audit trails
-once_cell = { workspace = true }
+tracing = { workspace = true }     # Real-time pathogen audit trails
+once_cell = { workspace = true }   # Safe static initialization
+
+[features]
+default = ["std"]
+# [Standard v1.0] Standard library support for general-purpose compute.
+# Explicitly re-exporting std for all downstream dependencies for full compatibility.
+std = ["serde/std", "anyhow/std", "rttp/std"] 
+# [RFC-003] Enable AVX-512/SIMD acceleration for tensor watermarking
+simd-acceleration = []
 
 [dev-dependencies]
-# Benchmarking for 300µs quarantine latency targets
+# Benchmarking quarantine latency targets (<300µs)
 criterion = { workspace = true }
