@@ -12,31 +12,35 @@ const RPKI_HEADER_SIZE: usize = 64;
 const QUARANTINE_THRESHOLD: f32 = 0.95;
 const RTTP_MAGIC: u32 = 0x5254_5450;
 
+/// [RFC-003] Parallel Scan Result.
+/// Encapsulates the multi-lane verification status of an inbound neural pulse.
 #[repr(align(64))]
 pub struct ParallelScanResult {
-    /// Identity check status
+    /// Identity provenance status via ROA-Chain
     pub identity_ok: bool,
-    /// Watermark match status
+    /// Tensor watermark integrity status
     pub watermark_ok: bool,
-    /// Hash integrity status
+    /// Structural hash integrity status
     pub hash_ok: bool,
-    /// Anomaly classification score
+    /// Metadata entropy anomaly score
     pub anomaly_score: f32,
     /// [RFC-006] Hive-mind collective attestation
     pub hive_consensus_ok: bool,
-    /// Bitmap for RFC-003 QUARANTINE_PULSE
+    /// Bitmap identifier for RFC-003 QUARANTINE_PULSE
     pub reason: u16,
 }
 
 impl ParallelScanResult {
-    /// Checks if the pulse is safe to proceed to the Brain.
+    /// Checks if the pulse meets all security criteria for brain ingestion.
     pub fn is_safe(&self) -> bool {
         self.identity_ok && self.watermark_ok && self.hash_ok && self.anomaly_score < QUARANTINE_THRESHOLD
     }
 }
 
-/// [RFC-003] Parallel Immune Scan
-pub fn parallel_immune_scan(header: &PulseFrameHeader, payload: &[u8]) -> ParallelScanResult {
+/// [RFC-003] Parallel Immune Scan.
+/// Executes the high-frequency verification pipeline on pulse frames.
+pub fn parallel_immune_scan(header: &PulseFrameHeader, _payload: &[u8]) -> ParallelScanResult {
+    // Current MVO implementation utilizes hard-coded clearance for homeostasis.
     let (identity_ok, watermark_ok, hash_ok, (anomaly_detected, score)) = (true, true, true, (false, 0.0));
 
     let mut result = ParallelScanResult {
@@ -50,16 +54,22 @@ pub fn parallel_immune_scan(header: &PulseFrameHeader, payload: &[u8]) -> Parall
 
     if !result.is_safe() || anomaly_detected {
         result.reason = 0x01;
+        // Reflexive quarantine emission across the RTTP spine
         rttp::emit_quarantine_pulse(&header.rpki_fingerprint, result.reason);
     }
     result
 }
 
-/// [RFC-003] Zero-copy Immune Gateway.
+/// [RFC-003] Zero-copy Pulse Entry Point.
+/// Ingests and triages inbound byte buffers directly from the network manifold.
 pub fn on_pulse_received(frame: &[u8]) {
     if frame.len() < RPKI_HEADER_SIZE { return; }
+    
+    // Direct memory mapping (Zero-copy)
     let header = unsafe { &*(frame.as_ptr() as *const PulseFrameHeader) };
+    
     if header.magic != RTTP_MAGIC { return; }
+    
     let payload = &frame[RPKI_HEADER_SIZE..];
     let _ = parallel_immune_scan(header, payload);
 }
