@@ -5,20 +5,21 @@ version.workspace = true
 edition = "2024" # Explicitly set edition to 2024 for full compatibility
 authors = ["Aicent Stack Team <lee@aicent.com>"]
 license = "Apache-2.0"
-repository = "https://github.com/Aicent-Stack/rpki" # Point to its own independent repository
+repository = "https://github.com/Aicent-Stack/rpki" # Points to its own independent repository
 homepage = "http://rpki.com"
 documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-003-RPKI-IMMUNITY.md"
 keywords = ["sovereign-ai", "zero-trust", "tensor-watermarking", "rfc-003", "pathogen-isolation", "128-bit-atomic"]
 categories = ["cryptography", "network-programming", "security", "hardware-acceleration"]
-rust-version = "1.85" # Explicitly set rust-version to 1.85 for consistency
+rust-version.workspace = true # Explicitly inherit rust-version for consistency
 
 [dependencies]
 # --- Core Organism Linking (Unidirectional Dependency Flow) ---
 # RPKI inspects the Neural Spine (RTTP) in-band for all security assertions.
-rttp = { workspace = true, features = ["std"] } # Explicitly enable RTTP's std feature
+# Explicitly enable RTTP's std feature for full compatibility.
+rttp = { workspace = true, features = ["std"] } 
 
 # --- Parallel Immune Pipeline ---
-# SIMD-level acceleration for sub-300µs pathogen detection.
+# [RFC-003] SIMD-level acceleration for sub-300µs pathogen detection.
 rayon = { workspace = true }
 crossbeam = { workspace = true }
 crossbeam-channel = { workspace = true }
@@ -39,8 +40,8 @@ tracing = { workspace = true }     # Real-time pathogen audit trails
 [features]
 default = ["std"]
 # [Standard v1.0] Standard library support for general-purpose compute.
-# Explicitly re-exporting 'std' for all foundational dependencies.
-std = ["serde/std", "anyhow/std", "rttp/std"] 
+# Explicitly re-exporting 'std' for internal Aicent Stack dependencies to avoid cyclic feature conflicts.
+std = ["rttp/std"] 
 
 # [RFC-003] Feature flag to enable AVX-512/SIMD acceleration for tensor watermarking.
 simd-acceleration = []
