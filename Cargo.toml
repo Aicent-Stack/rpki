@@ -7,7 +7,7 @@ edition.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-homepage = "https://rpki.com"
+homepage = "http://rpki.com"
 documentation = "https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-003-RPKI-IMMUNITY.md"
 rust-version.workspace = true
 
