@@ -7,61 +7,79 @@
 //! 
 //! This module acts as the heuristic vanguard of the immune pipeline. 
 //! It executes a micro-classifier on the metadata of inbound Pulse Frames 
-//! to detect Man-in-the-Middle (MITM) signatures, Sybil patterns, and 
-//! cognitive hijack attempts before they reach the Aicent Brain.
+//! utilizing 128-bit hardware atomicity to track pathogen evolution in real-time.
 
 use rttp::PulseFrameHeader;
+use crossbeam::atomic::AtomicCell; // 🛡️ Restored 128-bit Sovereignty via AtomicCell
+use std::time::Instant;
 
 /// [RFC-003] Entropy Threshold for Anomaly Classification.
 /// Defines the maximum allowable metadata deviation before a pulse is 
 /// flagged as a potential pathogen (0.0 to 1.0).
 pub const QUARANTINE_THRESHOLD: f32 = 0.95;
 
-/// [RFC-003] Intent Anomaly Score
-/// Evaluates the 64-byte RTTP header for structural and temporal deviations.
-/// 
-/// [PERF] This classifier is designed to fit entirely within the CPU's L1 cache 
-/// (approx. 8KB model size) to ensure inference completes in <5µs.
-pub fn classify_intent_stream(header: &PulseFrameHeader) -> (bool, f32) {
-    // [LOGIC] In a production MVO, this extracts features such as:
-    // 1. Temporal Jitter (Delta between header.timestamp_ns and local clock)
-    // 2. Semantic Hash collision frequency (RFC-002)
-    // 3. ZCMK bid anomalies (e.g., zero-value bids during high grid pressure)
-    
-    let mut anomaly_score: f32 = 0.0001; // Genesis Homeostasis baseline
-    
-    // Heuristic 1: Priority Abuse Detection
-    // If a non-quarantine pulse attempts to hijack the critical priority tier (255)
-    if header.priority == 255 && (header.flags & 0b1000 == 0) {
-        anomaly_score += 0.85;
-        log_anomaly("Heuristic Trigger: Priority Elevation Attempt.");
-    }
-
-    // Heuristic 2: Temporal Drift Analysis
-    // Detecting replay attacks or severe MITM latency injection
-    let current_ns = std::time::Instant::now().elapsed().as_nanos() as u32;
-    let drift = (current_ns as i64 - header.timestamp_ns as i64).abs();
-    
-    if drift > 500_000 { // >500µs drift implies potential interception
-        anomaly_score += 0.45;
-        log_anomaly(&format!("Temporal Jitter Anomaly: {}ns drift detected.", drift));
-    }
-
-    // Evaluate against the RFC-003 Quarantine Threshold
-    let is_pathogen = anomaly_score >= QUARANTINE_THRESHOLD;
-    
-    if is_pathogen {
-        #[cfg(debug_assertions)]
-        log_anomaly(&format!(
-            "🚨 PATHOGEN CLASSIFIED | Score: {:.4} | Action: QUARANTINE", 
-            anomaly_score
-        ));
-    }
-
-    (is_pathogen, anomaly_score)
+/// [RFC-003] Anomaly Manifold.
+/// Tracks the security health of a GTIOT node using 128-bit atomics.
+/// Packs [64-bit PathogenScore | 64-bit LastTriageTimestamp] to prevent 
+/// audit-tearing during active security events.
+pub struct AnomalyManifold {
+    /// Hardware-locked 128-bit audit vector.
+    pub audit_vector: AtomicCell<u128>,
 }
 
-/// Internal high-fidelity logger for the anomaly classifier.
+impl AnomalyManifold {
+    /// Initializes a new Anomaly Manifold with zero-threat baseline.
+    pub fn new() -> Self {
+        Self {
+            audit_vector: AtomicCell::new(0),
+        }
+    }
+
+    /// [RFC-003] Intent Classification Logic.
+    /// Evaluates the 64-byte RTTP header for structural and temporal deviations.
+    /// 
+    /// [PERF] This classifier is designed for CPU L1 cache residency 
+    /// ensuring inference finality in <5µs.
+    pub fn classify_intent_stream(&self, header: &PulseFrameHeader) -> (bool, f32) {
+        let mut score: f32 = 0.0001; // Genesis Homeostasis baseline
+        
+        // Feature 1: Temporal Jitter Detection
+        // Detecting potential interception via nanosecond clock drift.
+        let local_now = Instant::now().elapsed().as_nanos() as u32;
+        let drift = (local_now as i64 - header.timestamp_ns as i64).abs();
+        
+        if drift > 500_000 { // >500µs drift implies path tampering
+            score += 0.45;
+        }
+
+        // Feature 2: Priority Integrity Check
+        // Flagging unauthorized attempts to use the Critical Quarantine tier.
+        if header.priority == 255 && (header.flags & 0b1000 == 0) {
+            score += 0.85;
+        }
+
+        let is_pathogen = score >= QUARANTINE_THRESHOLD;
+        
+        if is_pathogen {
+            // Atomically record the breach with a 128-bit temporal snapshot.
+            self.record_pathogen_event(score as f64);
+            
+            #[cfg(debug_assertions)]
+            log_anomaly(&format!("🚨 PATHOGEN IDENTIFIED | Score: {:.4} | Action: ISOLATE", score));
+        }
+
+        (is_pathogen, score)
+    }
+
+    /// Atomically updates the threat manifold with 128-bit precision.
+    fn record_pathogen_event(&self, score: f64) {
+        let ts = Instant::now().elapsed().as_nanos() as u64;
+        let packed = ((score.to_bits() as u128) << 64) | (ts as u128);
+        self.audit_vector.store(packed);
+    }
+}
+
+/// Professional ANSI logger for RPKI anomaly events.
 fn log_anomaly(msg: &str) {
-    eprintln!("\x1b[1;31m[RPKI-ANOMALY]\x1b[0m 👁️ {}", msg);
+    println!("\x1b[1;31m[RPKI-ANOMALY]\x1b[0m 👁️ {}", msg);
 }
