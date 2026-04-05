@@ -16,25 +16,25 @@ keywords = ["sovereign-ai", "zero-trust", "tensor-watermarking", "rfc-003", "pat
 categories = ["cryptography", "network-programming", "security", "hardware-acceleration"]
 
 [dependencies]
-# --- Core Organism Linking (Unidirectional Dependency Flow) ---
-# RPKI secures the Neural Spine (RTTP) by intercepting pulses in-band.
-# Explicitly enable RTTP's 'std' feature for full protocol integration.
+# --- Core Organism Linking (Unidirectional Flow) ---
+# RPKI secures the Neural Spine (RTTP) by intercepting and auditing pulses in-band.
+# 🛡️ THE ARCHITECTURAL LOCK: RPKI depends on RTTP, but RTTP no longer depends on RPKI.
 rttp = { workspace = true, features = ["std"] }
 
 # --- Parallel Immune Pipeline (SIMD Execution) ---
 # Designed for <10µs scan latency on hardware-accelerated units.
-# [PERF] Utilizing Rayon for work-stealing parallel triage.
+# [PERF] Utilizing Rayon for work-stealing parallel triage across 4 SIMD lanes.
 rayon             = { workspace = true } 
-crossbeam         = { workspace = true } # Lock-free primitives for threat manifolds
+crossbeam         = { workspace = true } # Lock-free primitives for the Threat Manifold
 crossbeam-channel = { workspace = true } # High-frequency pathogen reporting
-parking_lot       = { workspace = true } # HFT-grade synchronization for audit state
-once_cell         = { workspace = true } # Thread-safe initialization of the Merkle-DAG
+parking_lot       = { workspace = true } # HFT-grade synchronization for audit-state consistency
+once_cell         = { workspace = true } # Safe static initialization of the Merkle-DAG cache
 
 # --- Cryptographic DNA (Zero-Trust Provenance) ---
-# High-performance primitives for the Data Soul's integrity.
-sha2    = { workspace = true }        # Merkle-DAG hashing for identity chains
-ring    = { workspace = true }        # Hardware-accelerated cryptographic signatures
-zeroize = { workspace = true, features = ["derive"] } # [SECURITY] Secure memory clearing
+# High-performance primitives for protecting the "Data Soul."
+sha2    = { workspace = true }        # Merkle-DAG hashing for ROA-Chain integrity
+ring    = { workspace = true }        # Hardware-native signing and verification
+zeroize = { workspace = true, features = ["derive"] } # [SECURITY] Secure memory clearing for AID seeds
 
 # --- Logic, Telemetry & Audit ---
 serde   = { workspace = true, features = ["derive"] }
@@ -42,24 +42,23 @@ anyhow  = { workspace = true }
 tracing = { workspace = true }        # Real-time pathogen isolation audit trails
 
 [features]
-# Standard implementation: Enables zero-trust defense for server and edge clusters.
+# Standard implementation: Enables zero-trust defense for planetary-scale clusters.
 default = ["std"]
 
-# [Standard v1.0] Standard library support for general-purpose compute.
-# 🛡️ FIX: Removed 'smallvec/std' as it does not exist in the source crate.
-# Re-exports 'std' for internal Aicent Stack dependencies to prevent feature conflict.
+# [Standard v1.0] Standard library support for the immunity layer.
+# Propagating 'std' to internal dependencies while maintaining no-std potential.
 std = [
     "serde/std", 
     "anyhow/std", 
     "rttp/std"
 ]
 
-# [RFC-003] Enable AVX-512/SIMD acceleration for Tensor Watermarking.
-# Enabling this activates hardware-specific intrinsics for bit-slice extraction.
+# [RFC-003] SIMD acceleration for Tensor Watermarking (AVX-512 / Tensor Cores).
+# Enabling this activates hardware-specific intrinsics for nanosecond bit-slice extraction.
 simd-acceleration = []
 
 # [RFC-006] Hive Shield Integration.
-# Enables swarm-wide collective attestation of tensor pathogens.
+# Enables swarm-wide collective attestation of tensor pathogens via Aicent.net.
 hive-shield = []
 
 [dev-dependencies]
