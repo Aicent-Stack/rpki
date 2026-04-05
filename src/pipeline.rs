@@ -6,12 +6,11 @@
 //! # RFC-003: RPKI Immune Pipeline
 //! 
 //! This module implements the high-frequency verification pipeline for neural pulses.
-//! Utilizing 128-bit atomic manifolds and SIMD-level parallelism, it identifies 
-//! and isolates pathogens within the sub-millisecond biological reflex arc.
+//! It leverages SIMD-level parallelism to identify and isolate pathogens within the 
+//! sub-millisecond biological reflex arc.
 
 use rttp::PulseFrameHeader;
-use crossbeam::atomic::AtomicCell; // 🛡️ Restored 128-bit Sovereignty via AtomicCell
-use rayon::prelude::*;
+use rayon::prelude::*; // 🛡️ High-performance parallel dispatch
 
 // --- Performance Anchors for Standard v1.0 ---
 /// Fixed 64-byte header size for zero-copy, hardware-aligned parsing.
@@ -20,30 +19,6 @@ const RPKI_HEADER_SIZE: usize = 64;
 const QUARANTINE_THRESHOLD: f32 = 0.95;
 /// Protocol Magic Number for RTTP-v1 Pulse Frames.
 const RTTP_MAGIC: u32 = 0x5254_5450;
-
-/// [RFC-003] Threat Manifold.
-/// [PERF] Utilizes AtomicCell<u128> to pack [64-bit PathogenScore | 64-bit TriageTimestamp]
-/// into a single hardware-locked manifold. This ensures nanosecond consistency 
-/// during multi-lane SIMD audits and prevents audit-tearing.
-#[repr(align(64))]
-pub struct ThreatManifold {
-    /// Hardware-locked 128-bit threat vector.
-    pub audit_manifold: AtomicCell<u128>,
-}
-
-impl ThreatManifold {
-    /// Records a security breach with 128-bit hardware atomicity.
-    pub fn record_breach(&self, score: f64, ts_ns: u64) {
-        let packed = ((score.to_bits() as u128) << 64) | (ts_ns as u128);
-        self.audit_manifold.store(packed);
-    }
-
-    /// Loads the current threat state as a consistent snapshot.
-    pub fn get_threat_snapshot(&self) -> (f64, u64) {
-        let val = self.audit_manifold.load();
-        (f64::from_bits((val >> 64) as u64), val as u64)
-    }
-}
 
 /// [RFC-003] Parallel Scan Result.
 /// Encapsulates the multi-lane verification status of an inbound neural pulse.
@@ -66,6 +41,7 @@ pub struct ParallelScanResult {
 
 impl ParallelScanResult {
     /// Checks if the pulse meets all security criteria for brain ingestion.
+    /// Logic: (Identity & Watermark & Hash) must be valid AND Anomaly < Threshold.
     pub fn is_safe(&self) -> bool {
         self.identity_ok
             && self.watermark_ok
@@ -77,18 +53,21 @@ impl ParallelScanResult {
 /// [RFC-003] Parallel Immune Scan.
 /// Executes a four-lane verification pipeline simultaneously using Rayon work-stealing.
 /// Designed for <10µs scan latency on hardware-accelerated SIMD units.
-pub fn parallel_immune_scan(header: &PulseFrameHeader, _payload: &[u8]) -> ParallelScanResult {
-    // [PERF] Fork-Join parallelism: Leveraging multiple cores for the sub-ms reflex arc.
+pub fn parallel_immune_scan(header: &PulseFrameHeader, payload: &[u8]) -> ParallelScanResult {
+    // [PERF] Fork-Join parallelism: This is where we justify the <10µs scan latency.
+    // Each lane targets a specific hardware primitive (ALU/SIMD/Tensor Cores).
     let (res_a, res_b) = rayon::join(
         || {
             rayon::join(
                 || {
                     // [LANE 1] ROA-Chain Audit (RFC 6480 Evolution)
+                    // Validates AID fingerprint against the local Merkle-DAG cache.
                     crate::dag::MerkleDag::verify_roa_proof(&header.rpki_fingerprint, header.semantic_hash)
                 },
                 || {
-                    // [LANE 2] In-band Watermark Extraction from Tensor Manifold
-                    let watermark = crate::watermark::extract(_payload, &header.rpki_fingerprint);
+                    // [LANE 2] In-band Tensor Watermarking (SIMD extraction)
+                    // Extracts the invisible cryptographic marker from the manifold.
+                    let watermark = crate::watermark::extract(payload, &header.rpki_fingerprint);
                     crate::watermark::verify(watermark, header.timestamp_ns)
                 }
             )
@@ -97,10 +76,12 @@ pub fn parallel_immune_scan(header: &PulseFrameHeader, _payload: &[u8]) -> Paral
             rayon::join(
                 || {
                     // [LANE 3] Structural Integrity Check (Hardware CRC32C)
-                    header.checksum == crate::crypto::compute_hardware_crc32(header, _payload)
+                    // Verified via hardware-level intrinsics in the crypto module.
+                    header.checksum == crate::crypto::compute_hardware_crc32(header, payload)
                 },
                 || {
                     // [LANE 4] Intent Anomaly Classification (Heuristic Entropy)
+                    // 🛡️ FIX: Direct call to the top-level function in anomaly.rs
                     crate::anomaly::classify_intent_stream(header)
                 }
             )
@@ -133,8 +114,9 @@ pub fn parallel_immune_scan(header: &PulseFrameHeader, _payload: &[u8]) -> Paral
 
 /// [RFC-003] Zero-copy Pulse Entry Point.
 /// Ingests and triages inbound byte buffers directly from the network manifold.
+/// This function acts as the "Digital Customs" for every AI neural impulse.
 pub fn on_pulse_received(frame: &[u8]) {
-    // 🛡️ [SECURITY AUDIT] Strict memory boundary enforcement.
+    // 🛡️ [SECURITY AUDIT] Strict memory boundary enforcement to prevent overflow.
     if frame.len() < RPKI_HEADER_SIZE {
         eprintln!("\x1b[1;31m[RPKI-PATHOGEN]\x1b[0m Frame Underflow detected.");
         return;
