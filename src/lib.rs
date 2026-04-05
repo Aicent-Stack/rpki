@@ -42,7 +42,7 @@ pub enum PathogenType {
     WatermarkCorruption,
     /// Sovereign AID fingerprint rejected by the ROA-Chain Merkle proof.
     IdentityHijack,
-    /// Metadata entropy scan indicates Man-in-the-Middle (MITM) patterns.
+    /// Metadata entropy scan indicates Man-in-the-Middle (MITM) hijacking patterns.
     SemanticAnomaly,
     /// Node rejected by Hive-mind collective consensus via Aicent.net (RFC-006).
     CollectiveRejection,
