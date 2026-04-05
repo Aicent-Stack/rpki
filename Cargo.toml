@@ -16,25 +16,26 @@ keywords = ["sovereign-ai", "zero-trust", "tensor-watermarking", "rfc-003", "pat
 categories = ["cryptography", "network-programming", "security", "hardware-acceleration"]
 
 [dependencies]
-# --- Core Organism Linking (Unidirectional Flow) ---
-# RPKI secures the Neural Spine (RTTP) by intercepting and auditing pulses in-band.
-# 🛡️ THE ARCHITECTURAL LOCK: RPKI depends on RTTP, but RTTP no longer depends on RPKI.
+# --- Core Organism Linking (Unidirectional Dependency Flow) ---
+# RPKI inspects the Neural Spine (RTTP) in-band for all security assertions.
+# Explicitly enable RTTP's 'std' feature for full protocol integration.
 rttp = { workspace = true, features = ["std"] }
 
 # --- Parallel Immune Pipeline (SIMD Execution) ---
 # Designed for <10µs scan latency on hardware-accelerated units.
 # [PERF] Utilizing Rayon for work-stealing parallel triage across 4 SIMD lanes.
 rayon             = { workspace = true } 
-crossbeam         = { workspace = true } # Lock-free primitives for the Threat Manifold
+# [PERF] Required for AtomicCell<u128> support in Threat Manifolds and Merkle-DAG.
+crossbeam         = { workspace = true } 
 crossbeam-channel = { workspace = true } # High-frequency pathogen reporting
-parking_lot       = { workspace = true } # HFT-grade synchronization for audit-state consistency
+parking_lot       = { workspace = true } # HFT-grade synchronization for audit state
 once_cell         = { workspace = true } # Safe static initialization of the Merkle-DAG cache
 
 # --- Cryptographic DNA (Zero-Trust Provenance) ---
 # High-performance primitives for protecting the "Data Soul."
-sha2    = { workspace = true }        # Merkle-DAG hashing for ROA-Chain integrity
-ring    = { workspace = true }        # Hardware-native signing and verification
-zeroize = { workspace = true, features = ["derive"] } # [SECURITY] Secure memory clearing for AID seeds
+sha2    = { workspace = true }        # Merkle-DAG hashing for identity chains
+ring    = { workspace = true }        # Hardware-accelerated signing and verification
+zeroize = { workspace = true, features = ["derive"] } # [SECURITY] Secure memory clearing
 
 # --- Logic, Telemetry & Audit ---
 serde   = { workspace = true, features = ["derive"] }
@@ -53,8 +54,8 @@ std = [
     "rttp/std"
 ]
 
-# [RFC-003] SIMD acceleration for Tensor Watermarking (AVX-512 / Tensor Cores).
-# Enabling this activates hardware-specific intrinsics for nanosecond bit-slice extraction.
+# [RFC-003] Enable AVX-512/SIMD acceleration for Tensor Watermarking.
+# Enabling this activates hardware-specific intrinsics for bit-slice extraction.
 simd-acceleration = []
 
 # [RFC-006] Hive Shield Integration.
