@@ -1,6 +1,6 @@
-# 🛡️ Contributing to RPKI: The Immunity
+# 🔴 Contributing to RPKI: The Immune System (RFC-003)
 
-**Thank you for choosing to evolve the biological defense layer of the Aicent Stack. You are contributing to a zero-trust immune system designed to protect the integrity of autonomous intelligence at wire speed.**
+**Thank you for choosing to evolve the biological defense layer of the Aicent Stack. You are at the "Defense Core" of the Sovereign AI Organism. Any mutation proposed here affects the manifold integrity and pathogen isolation reflex of the entire Hive.**
 
 <p align="left">
   <img src="https://img.shields.io/badge/Status-Homeostasis-brightgreen.svg" alt="Status">
@@ -8,68 +8,51 @@
   <img src="https://img.shields.io/badge/License-Apache--2.0-lightgrey.svg" alt="License">
 </p>
 
-⚪ **AICENT** | 💎 **RTTP** | 🔴 **RPKI** | 🟢 **ZCMK** | 🟡 **GTIOT** | 🟣 **AICENT-NET**
+**⚪ [AICENT](http://aicent.com) | 💎 [RTTP](http://rttp.com) | 🔴 [RPKI](http://rpki.com) | 🟢 [ZCMK](http://zcmk.com) | 🟡 [GTIOT](http://gtiot.com) | 🟣 [AICENT-NET](http://aicent.net) | 🌿 [epoekie](http://epoekie.com)**
 
 ---
 
-## 🏛️ The RPKI Security Philosophy
+## 🏛️ The Immune Philosophy: Security as a Reflex
 
-RPKI is not a traditional firewall; it is an **Immune-Infrastructural Interface [RFC-003]**. Every contribution must ensure that the "Data Soul" of the AI organism remains uncompromised. We prioritize absolute cryptographic integrity and sub-300µs pathogen isolation over legacy flexibility.
+The `rpki` repository manages the **Immunity Layer** of the stack. Its role is to eliminate the **"Security Tax"** by moving verification from sequential handshakes to **Parallel Bit-stream Triage**. Guided by the **🌿 Epoekie Philosophy**, RPKI acts as a protective symbiont that hardens the host substrate against zero-day pathogens while ensuring the digital soul remains inviolable.
 
-### Defense Standards:
-1. **Parallelism or Death:** Verification logic must be parallelizable via SIMD (AVX-512/Tensor Cores). If it stalls the RTTP neural spine, it will be rejected.
-2. **Side-Channel Immunity:** Cryptographic operations must be constant-time and utilize `zeroize` for sensitive memory boundaries.
-3. **Deterministic Triage:** Pathogen isolation (QUARANTINE_PULSE) must propagate across the grid in <300µs.
-
----
-
-## 🔬 The RFC-First Process
-
-Security evolution is governed by the **RFC-003 Specification**. We do not accept "logic-light" implementations.
-
-1. **Audit the Spec:** Deeply study **[RFC-003: RPKI (Immunity)](https://github.com/Aicent-Stack/manifesto/blob/main/rfcs/RFC-003-RPKI-IMMUNITY.md)** and its relationship to **RFC 6480**.
-2. **Security Evolution Proposal:** Any changes to the ROA-Chain or Tensor Watermarking logic require an `[SECURITY-EVOLUTION]` issue.
-3. **Audit Readiness:** All PRs will be subjected to "顕微鏡" (Microscopic) code review by the core architecture team.
+### The Immunity’s Mandatory Reflexes:
+1.  **Zero Latency Tax:** Verification logic must add **+0µs** to the critical transport path of **[RTTP](http://rttp.com)**.
+2.  **Deterministic Isolation:** Verifiable pathogens must be isolated via the **QUARANTINE_PULSE** in **< 300µs**.
+3.  **Manifold Integrity:** Every tensor pulse must be verified for provenance via manifold-locked watermarking before cognitive ingestion.
 
 ---
 
-## 🦀 Technical Rigor (Immunity Tier)
+## 🔬 Technical Standards for Immune Mutations
 
-- **Language:** Performance-critical Rust (1.75+).
-- **Zero Allocation:** The verification hot-path must maintain zero heap allocation to ensure deterministic latency.
-- **Verification Lanes:** Logic must adhere to the 4-lane SIMD parallel scan model defined in `pipeline.rs`.
-- **Hive Integration:** Ensure compatibility with **Swarm Shield (RFC-006)** collective attestation.
+To maintain the **165.28µs** end-to-end reflex arc, all contributions to the `rpki` crate must adhere to:
 
----
-
-## 🛠️ Development Workflow
-
-```bash
-# 1. Pull the Sovereign Workspace
-git clone https://github.com/Aicent-Stack/aicent-stack.git
-cd aicent-stack
-
-# 2. Focus on the Immunity Crate
-cargo check -p rpki
-cargo test -p rpki
-```
-
-### Contribution Steps:
-1. **Fork** the `rpki` repository under the Aicent-Stack organization.
-2. **Branch:** Use the `evolution/` prefix (e.g., `evolution/watermark-simd-opt`).
-3. **Commit:** Use [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `sec(rpki): hardened Merkle-DAG proof`).
-4. **Validation:** PRs must pass the **Sovereignty & Security Audit** CI suite.
+- **SIMD Hardening:** All watermark extraction and Merkle-audit logic must be offloaded to parallel hardware lanes (**AVX-512** or **Tensor Cores**). Serial verification is classified as a **Pathogen**.
+- **Lock-Free Manifolds:** The RPKI DAG cache must utilize lock-free data structures (via **Crossbeam**) to prevent thread-contention jitter in high-frequency environments.
+- **Steganographic Precision:** Any update to the watermarking algorithm must maintain a manifold drift of **< 0.0001%**, ensuring zero impact on AI inference accuracy.
+- **Priority 255 Logic:** The quarantine emission logic must be hard-coded for maximum priority on the **[Aicent.net](http://aicent.net)** backbone.
 
 ---
 
-## 📜 Sovereign Ownership & Licensing
+## 📜 The Evolutionary Workflow (Neural Integration)
 
-🛡️ All contributions are licensed under the **Apache-2.0 License** via the Aicent.com Organization. By contributing, you agree that your code becomes a permanent antibody within the Sovereign AI Immune System.
-
----
-**SYSTEM STATUS: HOMEOTASIS**  
-*"Protecting the integrity of intelligence at the speed of thought."*
-
-[Visit RPKI.com](http://rpki.com) | [Connect to Aicent.net](http://aicent.net) | [Follow @Aicent_com](https://x.com/Aicent_com)
+1.  **The Pulse (Discussion):** Propose security mutations in the [Organization Issues](https://github.com/Aicent-Stack/.github/issues/new?template=evolution_proposal.yml) using the Evolution template.
+2.  **The Specification:** Ensure your logic preserves the **ROA-style attestation** philosophy defined in **RFC-003**.
+3.  **The Reflex Test:** Submit a PR with a benchmark proving **< 10µs scan latency** on a hardware-accelerated substrate.
+4.  **Resonance Check:** Your PR will be audited by the **[Sentinel](https://github.com/Aicent-Stack/aicent-traffic)** for entropy-leakage signatures.
 
 ---
+
+## 🛡️ Sovereign Ownership & Symbiotic Defense
+
+- **License:** All contributions are licensed under the **Apache License 2.0**.
+- **Reputation Gain:** Neutralizing zero-day pathogens or optimizing SIMD verification pipelines grants the highest **Sovereign AID** reputation scores.
+- **Substrate Hardening:** By contributing, you attest that your code strengthens the host infrastructure's resilience, following the **[🌿 Epoekie Symbiosis](https://github.com/Aicent-Stack/epoekie)** model.
+
+---
+🔗 **Technical Genome:** [Aicent Docs](https://github.com/Aicent-Stack/aicent-docs)
+📡 **Sentinel Dashboard:** [Immune Vitality Active ✅]
+
+*"Security is not a wall; it is a reflex."*
+---
+© 2026 Aicent.com Organization. **SYSTEM STATUS: IMMUNE-ACTIVE**
