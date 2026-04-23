@@ -1,79 +1,79 @@
-// Aicent Stack | RPKI (Resource Public Key Infrastructure) 
-// Domain: http://rpki.com
-// Purpose: Protocol Suite Demonstration of Parallel Immune Triage (RFC-003).
-// Specification: RFC-003 Standard (Active).
-// License: Apache-2.0 via Aicent.com Organization.
-//! # RFC-003 Demo: Immune Reflex & Pathogen Isolation
-//! 
-//! This binary demonstrates the hardware-accelerated triage capabilities of the RPKI layer.
-//! It simulates the detection of Man-in-the-Middle (MITM) hijacking and the 
-//! subsequent surgical isolation of pathogens via the neural spine.
+/*
+ *  AICENT STACK - RFC-003: RPKI-COM (The Immunity Layer)
+ *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
+ *
+ *  "Demonstrating Parallel Tensor Watermarking and Surgical Pathogen Isolation."
+ *  Version: 1.2.2-Alpha | Domain: http://rpki.com
+ *
+ *  IMPERIAL_STANDARD: ABSOLUTE 128-BIT NUMERIC PURITY ENABLED.
+ *  SOVEREIGN_GRAVITY_WELL: MANDATORY AT INITIALIZATION.
+ *  TEMPORAL_SELF_SUPERVISION: RFC-009 ACTIVE.
+ */
 
-use rpki::{parallel_immune_scan, PROTOCOL_VERSION};
-use rttp::PulseFrameHeader;
-use std::time::Instant;
+use rpki_com::{ImmunityController, TensorWatermark, PathogenType, bootstrap_sentinel, SovereignDefense};
+use epoekie::{AID, SovereignLifeform, verify_organism};
+use rttp::{PulseFrame};
+use std::time::Duration;
 
-fn main() {
-    println!("\x1b[1;31m🛡️  RPKI IMMUNITY | Immune Reflex Test [RFC-003]\x1b[0m");
-    println!("   Status: Standard (Active) | Mode: Hardware-Accelerated Triage");
-    println!("----------------------------------------------------");
-
-    // 1. Setup Mock RTTP Pulse with integrated AID Fingerprint
-    // The AID fingerprint acts as the immutable root of trust for the RPKI chain.
-    let aid_fingerprint = [0x88; 32];
-    let payload = vec![0u8; 1024]; // 1KB High-dimensional Tensor Manifold
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // 1. Imperial Awakening (Immune Genesis)
+    let sentinel_seed = b"imperial_sentinel_demo_2026";
+    let sentinel_aid = AID::derive_from_entropy(sentinel_seed);
     
-    let header = PulseFrameHeader::new(
-        aid_fingerprint,
-        85_000_000_000, // Integrated ZCMK micro-bid (RFC-004)
-        0xBAAD_F00D_DEAD_BEEF // Semantic context hash (RFC-002)
-    );
+    // Enforcement of the Gravity Well
+    // Standalone execution demonstrates the 10ms Immune Sluggishness tax.
+    verify_organism!("rpki_sentinel_example_v122");
+    bootstrap_sentinel(sentinel_aid).await;
 
-    println!("📡 Ingesting RTTP Pulse Frame: Source AID 0x882_Alpha");
-    println!("   • Header: Fixed 64-byte Hardware Alignment (L1 Cache Optimized)");
-    println!("   • Triage: Parallel SIMD-Lane Pathogen Scan");
+    // 2. Initialize the Immunity Controller
+    // Radiant Mode enabled to showcase sub-300us detection arcs.
+    let is_radiant = true;
+    let mut sentinel = ImmunityController::new(sentinel_aid, is_radiant);
 
-    // 2. Scenario A: Homeostasis (Legitimate Sovereign Traffic)
-    println!("\n--- Scenario A: Validating Sovereign Pulse ---");
-    let start_a = Instant::now();
+    println!("\n[BOOT] Immunity Sentinel Active:");
+    println!("       SENTINEL_AID_GENESIS: {:032X}", sentinel_aid.genesis_shard);
+    println!("       DETECTION_THRESHOLD:  {:.4}\n", sentinel.isolation_sensitivity_f64);
+
+    // 3. Simulate an Incoming Pulse with 128-bit Tensor Watermark
+    let source_aid = AID::derive_from_entropy(b"unknown_node_2026");
+    let payload = vec![0x00; 64];
+    let frame = PulseFrame::new(source_aid, sentinel_aid, payload);
+
+    // Generating a valid 128-bit watermark
+    let valid_mark = TensorWatermark::generate_128(2026, b"imperial_secret");
+
+    println!("[PROCESS] Auditing incoming 128-bit pulse stream...");
+    let is_safe = sentinel.audit_pulse_stream(&frame, valid_mark).await;
     
-    // [PERF] Executing the 4-lane parallel immune scan pipeline (RFC-003).
-    // This process occurs in-band with +0µs added latency to the hot-path.
-    let scan_a = parallel_immune_scan(&header, &payload);
-    let latency_a = start_a.elapsed();
-
-    if scan_a.is_safe() {
-        println!("   ↳ SIMD-Lanes 1-4: All Gates Synchronized ✅");
-        println!("   ↳ ROA-Chain: Provenance Attested via Merkle-DAG");
-        println!("   ↳ Watermark: In-band Tensor Steganography Match");
-        println!("   ⏱️  Immune Reflex Latency: {:?}", latency_a);
+    if is_safe {
+        println!("          Status: PULSE_INTEGRITY_VERIFIED");
     }
 
-    // 3. Scenario B: Attack Defense (Digital Pathogen Hijack)
-    println!("\n--- Scenario B: Detecting MITM Pathogen ---");
+    // 4. Simulate a Pathogen Attack (Signature Spoofing)
+    println!("\n[ALERT] Simulating malicious pathogen incursion...");
+    let malicious_mark = TensorWatermark { signature_128: [0xFF; 16] }; // Invalid signature
     
-    // Simulate active tampering within the tensor manifold (Bit-flip attack)
-    let mut tampered_payload = payload.clone();
-    tampered_payload[10] ^= 0xFF; // Induced manifold divergence
-
-    let start_b = Instant::now();
-    let scan_b = parallel_immune_scan(&header, &tampered_payload);
-    let latency_b = start_b.elapsed();
-
-    if !scan_b.is_safe() {
-        println!("   ⚠️  ALERT: In-band Tensor Watermark Mismatch detected!");
-        println!("   🚨 THREAT: MITM Hijack pattern identified (Reason: 0x{:02x})", scan_b.reason);
-        println!("   🔒 ACTION: Emitting RFC-003 QUARANTINE_PULSE across backbone...");
-        println!("   🛡️  Reflex: Pathogen isolated in-flight. Neural spine protected.");
+    let audit_result = sentinel.audit_pulse_stream(&frame, malicious_mark).await;
+    
+    if !audit_result {
+        println!("        Result:   PATHOGEN_IDENTIFIED");
+        println!("        Action:   INITIATING_SURGICAL_ISOLATION");
     }
 
-    // 4. Final RFC-003 Performance Audit Report
-    println!("\n\x1b[1;31m======================= RPKI UNIT REPORT =======================\x1b[0m");
-    println!("⏱️  Parallel Scan Latency: < 20µs (Hardware Offloaded)");
-    println!("🛡️  Identity Integrity:    ROA-Chain Attested (99.999% Finality)");
-    println!("🦾 Security Mode:          In-band Tensor Steganography (SIMD)");
-    println!("🔄 Hive Integration:      Collective Shield Ready (RFC-006)");
-    println!("✅ Conclusion: Immune shield is impenetrable. Homeostasis verified.");
-    println!("   Protocol Version: {} ", PROTOCOL_VERSION);
-    println!("\x1b[1;31m================================================================\x1b[0m\n");
+    // 5. Verify Isolation Logic
+    let trust_score = sentinel.evaluate_entity_trust_f64(source_aid);
+    println!("\n[METABOLISM] Post-Isolation Trust Audit:");
+    println!("             Target_AID: {:X}", source_aid.genesis_shard);
+    println!("             Trust_Score: {:.4}", trust_score);
+
+    // 6. Defense Homeostasis Report
+    let hs = sentinel.report_defense_homeostasis();
+    println!("\n--- [DEFENSE_STATUS] ---");
+    println!("Detection Arc:    {}ns", hs.reflex_latency_ns);
+    println!("Metabolic Efficiency: {:.4}", hs.metabolic_efficiency);
+    println!("Quarantine Count:     {}", sentinel.quarantine_blacklist.len());
+
+    println!("\n[FINISH] RFC-003 Demonstration complete. The Empire is Guarded.");
+    Ok(())
 }
