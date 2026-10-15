@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-003: RPKI Immutable Merkle-DAG Storage
+ *  AICENT STACK - AICENT-003: RPKI Immutable Merkle-DAG Storage
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "The memory of sovereignty. Recording logic pathogens in a 128-bit chain."
@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 use std::time::Instant;
 use std::collections::BTreeMap;
 
-// INJECTION: Sovereign Ladder Inheritance from the Genetic Root (RFC-000)
+// INJECTION: Sovereign Ladder Inheritance from the Genetic Root (AICENT-000)
 use epoekie::{AID, HomeostasisScore, verify_organism};
 use crate::anomaly::{AnomalySignature_128, AnomalySeverity};
 
@@ -21,7 +21,7 @@ use crate::anomaly::{AnomalySignature_128, AnomalySeverity};
 // 1. DAG DATA STRUCTURES (The Ledger of Judgement)
 // =========================================================================
 
-/// RFC-003: DagNode_128
+/// AICENT-003: DagNode_128
 /// A single block in the immune evidence chain. 
 /// Encapsulates a logic pathogen signature and its temporal parent.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -44,7 +44,7 @@ pub struct DagNode_128 {
 
 /// The RPKI Merkle-DAG Ledger.
 /// Stores the chronological and causal evidence of logical pathogens.
-/// Designed to survive substrate-reboots via RFC-012 persistence.
+/// Designed to survive substrate-reboots via AICENT-012 persistence.
 pub struct ImmuneLedger {
     pub local_authority_aid: AID,
     pub nodes_map: BTreeMap<u128, DagNode_128>,
@@ -68,7 +68,7 @@ impl ImmuneLedger {
         }
     }
 
-    /// RFC-003: Append Anomaly to DAG.
+    /// AICENT-003: Append Anomaly to DAG.
     /// Seals an anomaly signature into the immutable evidence chain.
     /// [PERF] Hash computation is optimized for < 50µs execution.
     pub fn append_incident_128(
@@ -100,7 +100,7 @@ impl ImmuneLedger {
         new_hash
     }
 
-    /// RFC-003: Verify Ledger Integrity.
+    /// AICENT-003: Verify Ledger Integrity.
     /// Audits the entire chain for any signs of tampering or logic-drift.
     pub fn verify_ledger_integrity_128(&self) -> bool {
         let mut current_hash = self.last_inserted_hash_128;

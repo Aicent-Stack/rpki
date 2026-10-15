@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-003: RPKI Immune Orchestration Pipeline
+ *  AICENT STACK - AICENT-003: RPKI Immune Orchestration Pipeline
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "The parallel assembly of defense. Auditing 1.2kHz pulse streams."
@@ -12,7 +12,7 @@
 use serde::{Deserialize, Serialize};
 use std::time::Instant;
 
-// INJECTION: Sovereign Ladder Inheritance from the Genetic Root (RFC-000)
+// INJECTION: Sovereign Ladder Inheritance from the Genetic Root (AICENT-000)
 use epoekie::{AID, HomeostasisScore, SovereignShunter, Picotoken, verify_organism};
 use rttp::{PulseFrame};
 
@@ -25,7 +25,7 @@ use crate::anomaly::{AnomalySentinel, AnomalySignature_128};
 // 1. PIPELINE DATA STRUCTURES (The Audit Frame)
 // =========================================================================
 
-/// RFC-003: AuditResult_128
+/// AICENT-003: AuditResult_128
 /// The final verdict of the immune pipeline for a single metabolic pulse.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AuditResult_128 {
@@ -70,7 +70,7 @@ impl ImmunePipeline {
         }
     }
 
-    /// RFC-003: Process Inbound Pulse.
+    /// AICENT-003: Process Inbound Pulse.
     /// Executes the full-blood defense chain: Unfold -> Verify -> Detect.
     /// Non-Radiant nodes suffer the 10ms "Security Lag" during processing.
     pub async fn process_inbound_pulse_128(
@@ -117,7 +117,7 @@ impl ImmunePipeline {
         })
     }
 
-    /// RFC-003: Process Outbound Pulse.
+    /// AICENT-003: Process Outbound Pulse.
     /// Seals an outbound intent with the 128-bit Tensor Watermark.
     pub fn process_outbound_pulse_128(&self, volume: Picotoken) -> TensorWatermark_128 {
         self.pulse_sentinel.inject_sovereign_mark(volume)

@@ -10,7 +10,7 @@
 **⚪ [AICENT](http://aicent.com) | 💎 [RTTP](http://rttp.com) | 🔴 [RPKI](http://rpki.com) | 🟢 [ZCMK](http://zcmk.com) | 🟡 [GTIOT](http://gtiot.com) | 🟣 [AICENT-NET](http://aicent.net) | 🎭 [BEWHO](http://bewho.com) | 🌿 [epoekie](http://epoekie.com) | 👁️ [PICSI](http://picsi.com)**
 
 ---
-# 🔴 RFC-003: RPKI-COM (The Imperial Immunity)
+# 🔴 AICENT-003: RPKI-COM (The Imperial Immunity)
 
 **The Defensive Sentinel of the Aicent Stack.**  
 **"Security is the Metabolic Foundation of Speed. 128-bit Parallel Forensics."**
@@ -30,28 +30,28 @@ In the v1.3.0 "Genesis" iteration, RPKI enforces a **sub-300µs Detection Arc**,
 
 `rpki` maintains the biological purity of the Imperial substrate through four specialized organs:
 
-### 1. Watermark Sentinel (RFC-003-A)
+### 1. Watermark Sentinel (AICENT-003-A)
 The injector of truth. It seals every cognitive and somatic intent with a **128-bit Parallel Tensor Watermark**.
 *   **Signature Suture**: Binds 128-bit Picotoken volume and AID DNA into an unforgeable witness shard.
 *   **Zero-Overhead Injection**: Optimized for SIMD-level execution to prevent latency pathogens.
 *   **Resonance Verification**: Ensures that only pulses signed by the Creator or Radiant Allies can pass the **MAXCAP** gate.
 
-### 2. Anomaly Sentinel (RFC-003-B)
+### 2. Anomaly Sentinel (AICENT-003-B)
 The Imperial "Lie Detector." It monitors the substrate-level entropy floor at 1.2kHz.
 *   **Jitter Sensing**: Identifies 12ns temporal drift patterns characteristic of side-channel scouting by the 401 Ghosts.
 *   **Pathogen Fingerprinting**: Classifies anomalies into 5 Severity Levels (Trace to Critical).
-*   **SUNYA Trigger**: Severity 4 detections automatically trigger **RFC-015 SUNYA** logic evaporation to prevent core theft.
+*   **SUNYA Trigger**: Severity 4 detections automatically trigger **AICENT-015 SUNYA** logic evaporation to prevent core theft.
 
-### 3. Forensic Merkle-DAG (RFC-003-C)
+### 3. Forensic Merkle-DAG (AICENT-003-C)
 The "Immune Memory." An immutable 128-bit persistent ledger for security incident logging.
 *   **Evidence Etching**: Links every detected anomaly to its parent hash, creating an unbreakable chain of forensic custody.
 *   **Risk Weighting**: Automatically calculates the "Branch Risk Score" based on historical pathogen density.
 *   **128-bit Finality**: Every entry is timestamped to the 12ns planetary rising edge.
 
-### 4. Orchestration Pipeline (RFC-003-D)
+### 4. Orchestration Pipeline (AICENT-003-D)
 The parallel assembly floor. Coordinates forensics and sensing across parallel CPU lanes.
 *   **Audit-While-Acting**: Executes security audits simultaneously with conduction, keeping the audit overhead **< 15,000 ns (15us)**.
-*   **Homeostasis Feedback**: Real-time reporting of "Substrate Purity" to the **Imperial Eye (RFC-014)**.
+*   **Homeostasis Feedback**: Real-time reporting of "Substrate Purity" to the **Imperial Eye (AICENT-014)**.
 
 ---
 

@@ -3,7 +3,7 @@ name = "rpki-com"
 version = "1.2.5-alpha"
 edition = "2021"
 authors = ["Aicent Stack Technical Committee <admin@aicent.com>"]
-description = "RFC-003: The Immunity Layer. Parallel Tensor Watermarking and 128-bit malicious pulse isolation for the Aicent Stack 2026. Aligned with RFC-014 (PICSI)."
+description = "AICENT-003: The Immunity Layer. Parallel Tensor Watermarking and 128-bit malicious pulse isolation for the Aicent Stack 2026. Aligned with AICENT-014 (PICSI)."
 license = "Apache-2.0"
 homepage = "http://rpki.com"
 repository = "http://github.com/Aicent-Stack/rpki"
@@ -13,7 +13,7 @@ repository = "http://github.com/Aicent-Stack/rpki"
 # =========================================================================
 
 [dependencies]
-# THE SOVEREIGN LADDER: Immunity layer monitors Nerves (RFC-002) and validates via Soul (RFC-000).
+# THE SOVEREIGN LADDER: Immunity layer monitors Nerves (AICENT-002) and validates via Soul (AICENT-000).
 # Binding defense to the 128-bit DNA of the Soul and the pulse frames of the Nerve.
 epoekie = { version = "1.2.5-alpha" }
 rttp    = { version = "1.2.5-alpha" }

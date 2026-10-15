@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-003: RPKI-COM (The Immunity Layer)
+ *  AICENT STACK - AICENT-003: RPKI-COM (The Immunity Layer)
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "Demonstrating Parallel Tensor Watermarking and Surgical Pathogen Isolation."
@@ -74,8 +74,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("             Quarantine:  Verified in Registry");
 
     // 6. Sovereignty Awareness (PICSI Feedback)
-    // Synchronizing the Sentinel with the Imperial Eye (RFC-014).
-    println!("\n[METABOLISM] Synchronizing with Imperial Eye (RFC-014)...");
+    // Synchronizing the Sentinel with the Imperial Eye (AICENT-014).
+    println!("\n[METABOLISM] Synchronizing with Imperial Eye (AICENT-014)...");
     sentinel.current_homeostasis.picsi_resonance_idx = 0.999988;
     sentinel.current_homeostasis.metabolic_efficiency = 0.998;
     
@@ -91,6 +91,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Total Incidents:  {}", sentinel.total_incidents_detected_128);
     println!("Entropy Tax:      {:.2}%", hs.entropy_tax_rate * 100.0);
 
-    println!("\n[FINISH] RFC-003 Demonstration complete. The Empire is Guarded.");
+    println!("\n[FINISH] AICENT-003 Demonstration complete. The Empire is Guarded.");
     Ok(())
 }

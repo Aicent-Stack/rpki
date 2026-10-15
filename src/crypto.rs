@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-003: RPKI Cryptographic Substrate
+ *  AICENT STACK - AICENT-003: RPKI Cryptographic Substrate
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "The mathematical shield of the Empire. Logic folding at 12ns precision."
@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 use epoekie::{AID, HomeostasisScore};
 use std::time::Instant;
 
-/// [RFC-003] Sovereign Cipher v1.2.5.
+/// [AICENT-003] Sovereign Cipher v1.2.5.
 /// Implements 128-bit logic folding for sub-microsecond pulse encryption.
 /// This structure is hardware-aligned to 128-byte dual cache-lines.
 #[repr(C, align(128))]
@@ -23,7 +23,7 @@ pub struct SovereignCipher_128 {
     pub manifold_key_128: u128,
     /// 128-bit Entropy Seed derived from the Genesis Will.
     pub entropy_seed_128: u128,
-    /// Current Logic Fidelity Score (RFC-009).
+    /// Current Logic Fidelity Score (AICENT-009).
     pub fidelity_score_f64: f64,
 }
 
@@ -37,7 +37,7 @@ impl SovereignCipher_128 {
         }
     }
 
-    /// [RFC-003] Logic Folding Encryption.
+    /// [AICENT-003] Logic Folding Encryption.
     /// Transforms a 128-bit data block into a folded sovereign state.
     /// [PERF] Executed in < 5ns via direct bitwise XOR-rotation.
     #[inline(always)]
@@ -49,7 +49,7 @@ impl SovereignCipher_128 {
         (keyed_data << rotation) | (keyed_data >> (128 - rotation))
     }
 
-    /// [RFC-003] Logic Unfolding (Decryption).
+    /// [AICENT-003] Logic Unfolding (Decryption).
     /// Restores a folded state to its original 128-bit numeric purity.
     #[inline(always)]
     pub fn unfold_logic_128(&self, folded_data: u128, timestamp_ns: u128) -> u128 {
@@ -90,7 +90,7 @@ impl CryptographicSuture for SovereignCipher_128 {
         #[cfg(debug_assertions)]
         println!("\x1b[1;31m[CRYPTO-PQ]\x1b[0m Hardening logic against quantum-ghost pathogens.");
         
-        // [RESERVED] Post-Quantum Suture (RFC-015 SUNYA Integration)
+        // [RESERVED] Post-Quantum Suture (AICENT-015 SUNYA Integration)
         true
     }
 }

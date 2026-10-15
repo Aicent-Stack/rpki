@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-003: RPKI Anomaly Detection Engine
+ *  AICENT STACK - AICENT-003: RPKI Anomaly Detection Engine
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "The immune sensory system. Identifying logical pathogens in the 12ns grid."
@@ -17,7 +17,7 @@ use std::collections::VecDeque;
 // 1. ANOMALY DATA STRUCTURES (The Pathogen Alphabet)
 // =========================================================================
 
-/// RFC-003: AnomalySeverity
+/// AICENT-003: AnomalySeverity
 /// Categorization of substrate-level disruptions.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum AnomalySeverity {
@@ -28,7 +28,7 @@ pub enum AnomalySeverity {
     ImperialPathogen = 4, // Attempted Root-Manifest hijacking
 }
 
-/// RFC-003: AnomalySignature_128
+/// AICENT-003: AnomalySignature_128
 /// The unique fingerprint of a detected substrate disruption.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AnomalySignature_128 {
@@ -37,7 +37,7 @@ pub struct AnomalySignature_128 {
     pub severity: AnomalySeverity,
     pub entropy_delta_f64: f64,        // Relative entropy increase
     pub detected_at_ns_128: u128,      // Nanosecond-precision timestamp
-    pub picsi_radiance_snapshot: f64,  // RFC-014 Context
+    pub picsi_radiance_snapshot: f64,  // AICENT-014 Context
 }
 
 // =========================================================================
@@ -66,7 +66,7 @@ impl AnomalySentinel {
         }
     }
 
-    /// RFC-003: Detect Substrate Pathogen.
+    /// AICENT-003: Detect Substrate Pathogen.
     /// Analyzes node behavior against the 12ns jitter baseline.
     /// [PERF] Optimized for 161.862us hot-path execution.
     pub fn detect_substrate_pathogen_128(
@@ -112,7 +112,7 @@ impl AnomalySentinel {
         None
     }
 
-    /// RFC-015: Void Suppression Readiness.
+    /// AICENT-015: Void Suppression Readiness.
     /// Determines if an anomaly is severe enough to trigger logical evaporation.
     pub fn requires_void_strike_128(&self, signature: &AnomalySignature_128) -> bool {
         signature.severity == AnomalySeverity::ImperialPathogen && signature.entropy_delta_f64 > 100.0

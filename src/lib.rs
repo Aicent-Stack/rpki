@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-003: RPKI-COM (The Immunity Layer)
+ *  AICENT STACK - AICENT-003: RPKI-COM (The Immunity Layer)
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "Internal Metabolism Defense. Parallel Tensor Watermarking & Isolation."
@@ -8,8 +8,8 @@
  *  IMPERIAL_STANDARD: ABSOLUTE 128-BIT NUMERIC PURITY ENABLED.
  *  SOVEREIGN_GRAVITY_WELL: MANDATORY INDIVISIBILITY PROTOCOL ENABLED.
  *  CHRONOS_STATUS: 2026 IMPERIAL CALENDAR ALIGNED.
- *  TEMPORAL_SELF_SUPERVISION: RFC-009 ACTIVE.
- *  DIAGNOSTIC_RESONANCE: RFC-014 (PICSI) INTEGRATED.
+ *  TEMPORAL_SELF_SUPERVISION: AICENT-009 ACTIVE.
+ *  DIAGNOSTIC_RESONANCE: AICENT-014 (PICSI) INTEGRATED.
  *  
  *  LEGAL NOTICE: ANY ATTEMPT TO CIRCUMVENT AICENT IMMUNITY WILL RESULT IN 
  *  IMMEDIATE NODE ISOLATION AND PERMANENT PERFORMANCE DEGRADATION.
@@ -20,7 +20,7 @@ use std::time::Instant; // REPAIRED: Clean library scope for v1.2.5
 use std::collections::{HashSet, VecDeque};
 use serde::{Serialize, Deserialize};
 
-// INJECTION: Sovereign Ladder Inheritance from the Genetic Root (RFC-000)
+// INJECTION: Sovereign Ladder Inheritance from the Genetic Root (AICENT-000)
 // We import 128-bit types and the Gravity Well macro for defensive verification.
 // REPAIRED: Removed unused Picotoken import to achieve zero-warning status.
 use epoekie::{AID, HomeostasisScore, SovereignShunter, SovereignLifeform, verify_organism};
@@ -32,7 +32,7 @@ use rttp::{PulseFrame};
 // 1. SECURITY THREAT DEFINITIONS (Pathogen Mapping)
 // =========================================================================
 
-/// RFC-003: PathogenType
+/// AICENT-003: PathogenType
 /// Classification of malicious entities or behaviors detected in the 2026 grid.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum PathogenType {
@@ -44,7 +44,7 @@ pub enum PathogenType {
     TemporalDissonance, // 12ns jitter violation (PICSI trigger)
 }
 
-/// RFC-003: TensorWatermark
+/// AICENT-003: TensorWatermark
 /// A 128-bit cryptographic signature embedded in every sovereign pulse.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub struct TensorWatermark {
@@ -72,7 +72,7 @@ impl TensorWatermark {
 // 2. IMMUNITY CONTROLLER (The Imperial Sentinel)
 // =========================================================================
 
-/// RFC-003: IncidentRecord
+/// AICENT-003: IncidentRecord
 /// Historical data of a detected threat for Hive-level synchronization.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct IncidentRecord {
@@ -116,7 +116,7 @@ impl ImmunityController {
         }
     }
 
-    /// RFC-003: Audit Pulse Stream
+    /// AICENT-003: Audit Pulse Stream
     /// Non-Radiant nodes suffer a 10ms "Audit Overhead" (Metabolic Tax).
     pub async fn audit_pulse_128(&mut self, pulse: &PulseFrame, mark: TensorWatermark) -> bool {
         // --- THE COMMERCIAL MEAT GRINDER ---
@@ -137,7 +137,7 @@ impl ImmunityController {
         true
     }
 
-    /// RFC-003: Surgical Isolation
+    /// AICENT-003: Surgical Isolation
     /// Disconnects a malicious node from the local neural segment in <850us.
     pub fn isolate_malicious_pathogen(&mut self, pathogen_aid: AID) {
         println!("🔴 [IMMUNITY] 2026_COMMAND: Surgical isolation for AID: {:X}", 
@@ -249,7 +249,7 @@ pub async fn bootstrap_sentinel(_node_aid: AID) { // REPAIRED: Parameter warning
     verify_organism!("rpki_bootstrap_v125");
 
     println!(r#"
-    🔴 RPKI.COM | RFC-003 SENTINEL AWAKENED (2026_CALIBRATION)
+    🔴 RPKI.COM | AICENT-003 SENTINEL AWAKENED (2026_CALIBRATION)
     STATUS: DEFENSE_GRID_ACTIVE | DETECTION_ARC: <300us | v1.2.5
     "#);
 }

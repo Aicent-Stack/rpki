@@ -1,5 +1,5 @@
 /*
- *  AICENT STACK - RFC-003: RPKI Parallel Tensor Watermarking
+ *  AICENT STACK - AICENT-003: RPKI Parallel Tensor Watermarking
  *  (C) 2026 Aicent Stack Technical Committee. All Rights Reserved.
  *
  *  "The digital fingerprint of sovereignty. Every pulse is a witness."
@@ -12,7 +12,7 @@
 use serde::{Deserialize, Serialize};
 use epoekie::{AID, Picotoken};
 
-/// [RFC-003] Tensor Watermark v1.2.5.
+/// [AICENT-003] Tensor Watermark v1.2.5.
 /// Injected into the metadata of every 128-bit sovereign pulse.
 /// Designed for parallel validation in < 300us.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -23,7 +23,7 @@ pub struct TensorWatermark_128 {
     pub metabolic_tag: u128,
     /// 128-bit nanosecond timestamp locked to the 12ns jitter.
     pub emission_ts_ns: u128,
-    /// 128-bit logical fidelity checksum (RFC-009 Suture).
+    /// 128-bit logical fidelity checksum (AICENT-009 Suture).
     pub fidelity_checksum: u128,
 }
 
@@ -45,7 +45,7 @@ impl TensorWatermark_128 {
         }
     }
 
-    /// RFC-003: Parallel Integrity Check.
+    /// AICENT-003: Parallel Integrity Check.
     /// Performs a zero-latency validation of the 128-bit watermark.
     #[inline(always)]
     pub fn verify_pulse_integrity(&self, expected_aid_hash: u128) -> bool {
@@ -57,7 +57,7 @@ impl TensorWatermark_128 {
     }
 }
 
-/// [RFC-003] Watermark Injector.
+/// [AICENT-003] Watermark Injector.
 /// Operates within the RTTP conduction hot-path.
 pub struct PulseSentinel {
     pub local_aid: AID,
